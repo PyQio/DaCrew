@@ -24,7 +24,7 @@ client.on('message', msg => {
 
     if(command === 'ping')  {
         client.command.get('ping').execute(msg, args)
-    } else if(commang === 'pong') {
+    } else if(command === 'pong') {
         client.command.get('pong').execute(msg, args)
     }
 })
