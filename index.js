@@ -16,10 +16,10 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`)
 })
 
-client.on('message', msg => {
-    if(!msg.content.startsWith(PREFIX) || msg.author.bot) return
+client.on('message', message => {
+    if(!message.content.startsWith(PREFIX) || message.author.bot) return
 
-    const args = msg.content.slice(PREFIX.length).split(/ +/)
+    const args = message.content.slice(PREFIX.length).split(/ +/)
     const command = args.shift().toLowerCase()
 
     if (!client.commands.has(command)) return;
