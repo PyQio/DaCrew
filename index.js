@@ -26,6 +26,8 @@ client.on('message', msg => {
         client.command.get('ping').execute(msg, args)
     } else if(command === 'pong') {
         client.command.get('pong').execute(msg, args)
+    } else if(command === 'random') {
+        client.command.get('random').execute(msg, args)
     }
 })
 
