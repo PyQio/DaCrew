@@ -22,6 +22,11 @@ client.on('message', message => {
     const args = message.content.slice(PREFIX.length).split(/ +/)
     const commandName = args.shift().toLowerCase()
 
+    // whenever set args is set to true in a command file, it'll perform this check and supply feedback if necessary
+    if (command.args && !args.length) {
+        return message.channel.send(`You didn't provide any arguments, ${message.author}!`)
+    }
+
     if (!client.command.has(commandName)) return
 
     try {
