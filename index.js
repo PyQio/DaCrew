@@ -22,12 +22,13 @@ client.on('message', msg => {
     const args = msg.content.slice(PREFIX.length).split(/ +/)
     const command = args.shift().toLowerCase()
 
-    if(command === 'ping')  {
-        client.command.get('ping').execute(msg, args)
-    } else if(command === 'pong') {
-        client.command.get('pong').execute(msg, args)
-    } else if(command === 'random') {
-        client.command.get('random').execute(msg, args)
+    if (!client.commands.has(command)) return;
+
+    try {
+        client.commands.get(command).execute(message, args);
+    } catch (error) {
+        console.error(error);
+        message.reply('there was an error trying to execute that command!');
     }
 })
 
