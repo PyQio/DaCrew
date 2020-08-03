@@ -20,15 +20,15 @@ client.on('message', message => {
     if(!message.content.startsWith(PREFIX) || message.author.bot) return
 
     const args = message.content.slice(PREFIX.length).split(/ +/)
-    const command = args.shift().toLowerCase()
+    const commandName = args.shift().toLowerCase()
 
-    if (!client.command.has(command)) return;
+    if (!client.command.has(commandName)) return
 
     try {
-        client.command.get(command).execute(message, args);
+        client.command.get(commandName).execute(message, args)
     } catch (error) {
-        console.error(error);
-        message.reply('there was an error trying to execute that command!');
+        console.error(error)
+        message.reply('there was an error trying to execute that command!')
     }
 })
 
