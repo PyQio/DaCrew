@@ -28,7 +28,7 @@ client.on('message', message => {
     if(!message.content.startsWith(PREFIX) || message.author.bot) return
 
     // if the message could be a command, it will split the args based on / +/,
-    // aka a space (' ')
+    // aka a space (' ') or more than one (like "   ").
     const args = message.content.slice(PREFIX.length).split(/ +/)
     const commandName = args.shift().toLowerCase()
 
@@ -40,10 +40,19 @@ client.on('message', message => {
     const command = client.commands.get(commandName);
     
     // if args are important or needed for the command, please remember to set args: true 
-    // in the module.exports, otherwise this check won't be considered
-    if (command.args && !args.length) 
+    // in the module.exports, otherwise this check won't be considered. To let the user know
+    // what argument should be used for that command, add usage: '<something> <other>', 
+    // in the command file, so that it will be shown 
+    if (command.args && !args.length) {
         //${message.author} is the @ to the actual person that invoked the command.
-        return message.channel.send(`You didn't provide any arguments, ${message.author}!`)
+        let reply = `You didn't provide any arguments, ${message.author}!`;
+
+		if (command.usage) {
+			reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+        }
+        
+		return message.channel.send(reply);
+    }
 
     try {
         // the proper execution of the command

@@ -1,10 +1,10 @@
+// THIS NEEDS TO BE IMPLEMENTED YET
+
 module.exports = {
 	name: 'args-info',
 	description: 'Information about the arguments provided.',
-	// this is just a test for any kind of command with any number of args,
-	// so args is needed to be set true. See ../index.js for more details
-	args: true,
-	usage: '<any_arg>',
+    args: true,
+    usage: '<user> <role>',
 	execute(message, args) {
 		if (args[0] === 'foo') {
 			return message.channel.send('bar')
