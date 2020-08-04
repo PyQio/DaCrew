@@ -42,6 +42,7 @@ client.on('message', message => {
     // if args are important or needed for the command, please remember to set args: true 
     // in the module.exports, otherwise this check won't be considered
     if (command.args && !args.length) 
+        //${message.author} is the @ to the actual person that invoked the command.
         return message.channel.send(`You didn't provide any arguments, ${message.author}!`)
 
     try {
