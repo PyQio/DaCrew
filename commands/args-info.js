@@ -5,6 +5,7 @@ module.exports = {
 	// so args is needed to be set true. See ../index.js for more details
 	args: true,
 	usage: '<any_arg>',
+	aliases: ['a-i', 'infos'],
 	execute(message, args) {
 		if (args[0] === 'foo') {
 			return message.channel.send('bar')

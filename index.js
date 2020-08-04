@@ -76,7 +76,6 @@ client.on('message', message => {
             return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`)
         }
     }
-    
 
     
     try {
@@ -87,6 +86,9 @@ client.on('message', message => {
         message.reply('there was an error trying to execute that command!')
     }
 
+    // if the timestamps Collection doesn't have the message author's ID, 
+    // .set() the author ID with the current timestamp and create a setTimeout() 
+    // to automatically delete it after the cooldown period has passed
     timestamps.set(message.author.id, now)
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount)
 })
