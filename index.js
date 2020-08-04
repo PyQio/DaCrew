@@ -17,6 +17,11 @@ for(const file of commandFiles) {
     client.commands.set(command.name, command)
 }
 
+// cooldowns is a collection of cooldowns (in seconds) that can be found in the 
+// module.exports of a given command
+const cooldowns = new Discord.Collection()
+
+
 // once the bot is ready, you should read Logged in as ${nameChosenForTheBot}!
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`)
@@ -54,6 +59,26 @@ client.on('message', message => {
 		return message.channel.send(reply);
     }
 
+    // this section is checking whether the command module has a cooldown set. 
+    if (!cooldowns.has(command.name)) {
+        cooldowns.set(command.name, new Discord.Collection())
+    }
+    
+    const now = Date.now()
+    const timestamps = cooldowns.get(command.name)
+    const cooldownAmount = (command.cooldown || 3) * 1000
+    
+    if (timestamps.has(message.author.id)) {
+        const expirationTime = timestamps.get(message.author.id) + cooldownAmount
+    
+        if (now < expirationTime) {
+            const timeLeft = (expirationTime - now) / 1000
+            return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`)
+        }
+    }
+    
+
+    
     try {
         // the proper execution of the command
         client.commands.get(commandName).execute(message, args)
