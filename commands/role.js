@@ -1,8 +1,8 @@
 // THIS NEEDS TO BE IMPLEMENTED YET
 
 module.exports = {
-	name: 'args-info',
-	description: 'Information about the arguments provided.',
+	name: 'role',
+	description: 'Changes the role of an account',
     args: true,
     usage: '<user> <role>',
 	execute(message, args) {
