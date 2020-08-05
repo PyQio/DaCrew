@@ -1,5 +1,3 @@
-const prefix = '+';
-
 module.exports = {
 	name: 'help',
 	description: 'List all of my commands or info about a specific command.',
@@ -7,6 +5,8 @@ module.exports = {
 	usage: '[command name]',
 	cooldown: 5,
 	execute(message, args) {
+        const prefix = '+';
+        const Discord = require('discord.js');
 		const data = [];
         const { commands } = message.client;
 
