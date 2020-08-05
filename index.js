@@ -93,5 +93,14 @@ client.on('message', message => {
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount)
 })
 
+client.on('shardError', error => {
+    console.error('A websocket connection encountered an error:', error)
+})
+
+process.on('unhandledRejection', error => {
+	console.error('Unhandled promise rejection:', error)
+})
+
+
 
 client.login(process.env.token)
