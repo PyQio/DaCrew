@@ -42,7 +42,6 @@ module.exports = {
             .setDescription(`${command.description}`)
             .setThumbnail('https://cdn.discordapp.com/app-icons/702972506537197698/ed56ddf792bd026a585cf84949666726.png')
             .addFields(
-                { name: 'Aliases', value: `${command.aliases.join(', ')}` },
                 { name: '\u200B', value: '\u200B' },
                 { name: 'Usage', value: prefix + `${command.name} ${command.usage}`, inline: true },
                 { name: 'Cooldown', value: `${command.cooldown || 3} second(s)`, inline: true },
