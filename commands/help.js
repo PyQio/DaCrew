@@ -35,13 +35,34 @@ module.exports = {
 
         data.push(`**Name:** ${command.name}`);
 
-        if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
+        const exampleEmbed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle('Some title')
+            .setURL('https://discord.js.org/')
+            .setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
+            .setDescription('Some description here')
+            .setThumbnail('https://i.imgur.com/wSTFkRM.png')
+            .addFields(
+                { name: 'Regular field title', value: 'Some value here' },
+                { name: '\u200B', value: '\u200B' },
+                { name: 'Inline field title', value: 'Some value here', inline: true },
+                { name: 'Inline field title', value: 'Some value here', inline: true },
+            )
+            .addField('Inline field title', 'Some value here', true)
+            .setImage('https://i.imgur.com/wSTFkRM.png')
+            .setTimestamp()
+            .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+
+        channel.channel.send(exampleEmbed);
+
+
+        /*if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
         if (command.description) data.push(`**Description:** ${command.description}`);
         if (command.usage) data.push(`**Usage:** ` + prefix + `${command.name} ${command.usage}`);
 
         data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
 
-        message.channel.send(data, { split: true });
+        message.channel.send(data, { split: true });*/
 
 	},
 };
