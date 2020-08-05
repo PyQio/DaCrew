@@ -36,33 +36,20 @@ module.exports = {
 
         const exampleEmbed = new Discord.MessageEmbed()
             .setColor('#0099ff')
-            .setTitle('Some title')
-            .setURL('https://discord.js.org/')
-            .setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
-            .setDescription('Some description here')
-            .setThumbnail('https://i.imgur.com/wSTFkRM.png')
+            .setTitle(`Help for : ${command.name}`)
+            .setURL('https://discord.com/new')
+            .setAuthor('Some name', 'https://cdn.discordapp.com/app-icons/702972506537197698/ed56ddf792bd026a585cf84949666726.png', 'https://discord.com/new')
+            .setDescription(`${command.description}`)
+            .setThumbnail('https://cdn.discordapp.com/app-icons/702972506537197698/ed56ddf792bd026a585cf84949666726.png')
             .addFields(
-                { name: 'Regular field title', value: 'Some value here' },
+                { name: 'Aliases', value: `${command.aliases.join(', ')}` },
                 { name: '\u200B', value: '\u200B' },
-                { name: 'Inline field title', value: 'Some value here', inline: true },
-                { name: 'Inline field title', value: 'Some value here', inline: true },
+                { name: 'Usage', value: prefix + `${command.name} ${command.usage}`, inline: true },
+                { name: 'Cooldown', value: `${command.cooldown || 3} second(s)`, inline: true },
             )
-            .addField('Inline field title', 'Some value here', true)
-            .setImage('https://i.imgur.com/wSTFkRM.png')
+            .setImage('https://cdn.discordapp.com/app-icons/702972506537197698/ed56ddf792bd026a585cf84949666726.png')
             .setTimestamp()
-            .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 
             message.channel.send(exampleEmbed);
-
-
-        /*data.push(`**Name:** ${command.name}`);
-        if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-        if (command.description) data.push(`**Description:** ${command.description}`);
-        if (command.usage) data.push(`**Usage:** ` + prefix + `${command.name} ${command.usage}`);
-
-        data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
-
-        message.channel.send(data, { split: true });*/
-
 	},
 };
