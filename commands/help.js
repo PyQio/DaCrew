@@ -33,7 +33,6 @@ module.exports = {
             return message.reply('that\'s not a valid command!');
         }
 
-        data.push(`**Name:** ${command.name}`);
 
         const exampleEmbed = new Discord.MessageEmbed()
             .setColor('#0099ff')
@@ -53,10 +52,11 @@ module.exports = {
             .setTimestamp()
             .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 
-        channel.channel.send(exampleEmbed);
+        channel.send(exampleEmbed);
 
 
-        /*if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
+        /*data.push(`**Name:** ${command.name}`);
+        if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
         if (command.description) data.push(`**Description:** ${command.description}`);
         if (command.usage) data.push(`**Usage:** ` + prefix + `${command.name} ${command.usage}`);
 
