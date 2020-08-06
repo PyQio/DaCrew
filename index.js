@@ -27,7 +27,7 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`)
 })
 
-/*client.on('message', message => {
+client.on('message', message => {
     // if the message doesn't start with the prefix or the author is the bot, then 
     // the message isn't considered.
     if(!message.content.startsWith(PREFIX) || message.author.bot) return
@@ -99,43 +99,7 @@ client.on('shardError', error => {
 
 process.on('unhandledRejection', error => {
 	console.error('Unhandled promise rejection:', error)
-})*/
-
-
-
-
-
-
-
-///////////     AUDIO SECTION
-
-let dispatcher;
-
-client.on('message', async message => {
-	// Join the same voice channel of the author of the message
-	if (message.member.voice.channel) {
-        const connection = await message.member.voice.channel.join();
-        dispatcher = connection.play('https://gaana.com/song/galliyan');
-	}
-});
-
-dispatcher.on('start', () => {
-	console.log('audio.mp3 is now playing!');
-});
-
-dispatcher.on('finish', () => {
-	console.log('audio.mp3 has finished playing!');
-});
-
-// Always remember to handle errors appropriately!
-dispatcher.on('error', console.error);
- 
-
-
-
-
-
-
+})
 
 
 
