@@ -103,4 +103,42 @@ process.on('unhandledRejection', error => {
 
 
 
+
+
+
+
+///////////     AUDIO SECTION
+
+const dispatcher = connection.play('https://gaana.com/song/galliyan');
+
+client.on('message', async message => {
+	// Join the same voice channel of the author of the message
+	if (message.member.voice.channel) {
+		const connection = await message.member.voice.channel.join();
+	}
+});
+
+dispatcher.on('start', () => {
+	console.log('audio.mp3 is now playing!');
+});
+
+dispatcher.on('finish', () => {
+	console.log('audio.mp3 has finished playing!');
+});
+
+// Always remember to handle errors appropriately!
+dispatcher.on('error', console.error);
+
+
+
+
+
+
+
+
+
+
+
+
+//////////      LOGIN
 client.login(process.env.token)
