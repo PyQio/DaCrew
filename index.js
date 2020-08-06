@@ -109,7 +109,7 @@ process.on('unhandledRejection', error => {
 
 ///////////     AUDIO SECTION
 
-const dispatcher;
+let dispatcher;
 
 client.on('message', async message => {
 	// Join the same voice channel of the author of the message
