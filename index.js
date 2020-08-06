@@ -109,12 +109,13 @@ process.on('unhandledRejection', error => {
 
 ///////////     AUDIO SECTION
 
-const dispatcher = connection.play('https://gaana.com/song/galliyan');
+const dispatcher;
 
 client.on('message', async message => {
 	// Join the same voice channel of the author of the message
 	if (message.member.voice.channel) {
-		const connection = await message.member.voice.channel.join();
+        const connection = await message.member.voice.channel.join();
+        dispatcher = connection.play('https://gaana.com/song/galliyan');
 	}
 });
 
