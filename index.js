@@ -27,7 +27,7 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`)
 })
 
-client.on('message', message => {
+/*client.on('message', message => {
     // if the message doesn't start with the prefix or the author is the bot, then 
     // the message isn't considered.
     if(!message.content.startsWith(PREFIX) || message.author.bot) return
@@ -99,7 +99,7 @@ client.on('shardError', error => {
 
 process.on('unhandledRejection', error => {
 	console.error('Unhandled promise rejection:', error)
-})
+})*/
 
 
 
